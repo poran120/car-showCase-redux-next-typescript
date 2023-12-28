@@ -29,6 +29,7 @@ const ReduxTest = () => {
           Decrement
         </button>
       </div>
+      Commit first time
     </div>
   );
 };
