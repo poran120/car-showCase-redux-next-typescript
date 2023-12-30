@@ -15,6 +15,7 @@ export interface SearchManufacturerProps {
   setManufacturers: (manufacturers: string) => void;
 }
 
+//cars type setup
 export interface CarsProps {
   city_mpg: number;
   class: string;
@@ -29,7 +30,7 @@ export interface CarsProps {
   transmission: string;
   year: number;
 }
-
+//
 export interface GetCarsResponse {
   data: CarsProps[];
 }
