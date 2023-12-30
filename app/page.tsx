@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CustomFilter from "@/shared/CustomFilter";
 import SearchBar from "@/shared/SearchBar";
 import { useGetCarsQuery } from "./store/features/apiFetch/apiFetch";
+import { CarCard } from "@/components";
 
 export default function Home() {
   const {
@@ -10,7 +11,6 @@ export default function Home() {
     error,
     isLoading,
   } = useGetCarsQuery({ model: "corolla", limit: "30" });
-  console.log(cars);
 
   return (
     <main className="overflow-hidden">
@@ -29,6 +29,11 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
+        <section>
+          {cars?.map((car: any) => (
+            <CarCard key={car._id} car={car} />
+          ))}
+        </section>
       </div>
     </main>
   );

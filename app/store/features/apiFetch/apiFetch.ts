@@ -15,7 +15,7 @@ export const carsApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getCars: builder.query<GetCarsResponse, { model: string; limit: string }>({
+    getCars: builder.query({
       query: (params) => ({ url: "cars", params }),
     }),
   }),
