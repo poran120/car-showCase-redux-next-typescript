@@ -1,9 +1,17 @@
+"use client";
 import Hero from "@/components/Hero";
-import ReduxTest from "@/components/ReduxTest";
 import CustomFilter from "@/shared/CustomFilter";
 import SearchBar from "@/shared/SearchBar";
+import { useGetCarsQuery } from "./store/features/apiFetch/apiFetch";
 
 export default function Home() {
+  const {
+    data: cars,
+    error,
+    isLoading,
+  } = useGetCarsQuery({ model: "corolla", limit: "30" });
+  console.log(cars);
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -22,7 +30,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ReduxTest />
     </main>
   );
 }

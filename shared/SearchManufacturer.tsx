@@ -17,7 +17,6 @@ const SearchManufacturer = ({
   };
 
   const query: string = useSelector((state: RootState) => state.query.query);
-  console.log(query, "hello");
 
   const filteredManufacturers =
     query === ""
