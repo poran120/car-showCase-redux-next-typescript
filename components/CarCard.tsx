@@ -15,30 +15,20 @@ interface CarCardProps {
   car: CarsProps;
 }
 const CarCard = ({ car }: CarCardProps) => {
-  const {
-    city_mpg,
-    year,
-    make,
-    model,
-    displacement,
-    transmission,
-    drive,
-    combination_mpg,
-    cylinders,
-    fuel_type,
-    highway_mpg,
-  } = car;
+  const { city_mpg, year, make, model, transmission, drive } = car;
   //Calculate for carRent
   const carRent = calculateCarRent(city_mpg, year);
 
   //Modal
   const dispatch = useDispatch();
-  const isOpen: boolean = useSelector((state: RootState) => state.modal.isOpen);
+  const isOpen = useSelector((state: RootState) => selectIsModalOpen(state));
 
   const handleOpenModal = () => {
-    console.log("hello");
+    dispatch(openModal());
   };
-
+  const handleCloseModal = () => {
+    dispatch(closeModal());
+  };
   return (
     <div className="car-card group mb-5">
       <div className="car-card__content">
@@ -96,7 +86,11 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
-      <CarDetailsModal car={car} isOpen={isOpen} closeModal={() => isOpen} />
+      <CarDetailsModal
+        car={car}
+        isOpen={isOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </div>
   );
 };

@@ -5,16 +5,18 @@ import Image from "next/image";
 
 interface CarDetailsProps {
   isOpen: boolean;
-  closeModal: () => void;
+  handleCloseModal: () => void;
   car: CarsProps;
 }
-const CarDetailsModal = ({ car, isOpen, closeModal }: CarDetailsProps) => {
-  // console.log(car);
-  console.log(process.env.NODE_ENV, "kddf");
+const CarDetailsModal = ({
+  car,
+  isOpen,
+  handleCloseModal,
+}: CarDetailsProps) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10" onClose={handleCloseModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -42,8 +44,9 @@ const CarDetailsModal = ({ car, isOpen, closeModal }: CarDetailsProps) => {
                   <button
                     type="button"
                     className="absolute top-2 right-2 z-10 w-fit p-2 bg-primary-blue-100 rounded-full"
-                    onClick={closeModal}
+                    onClick={handleCloseModal}
                   >
+                    {""}
                     <Image
                       src="/close.svg"
                       alt="close"
@@ -100,7 +103,7 @@ const CarDetailsModal = ({ car, isOpen, closeModal }: CarDetailsProps) => {
                       {car.make} {car.model}
                     </h2>
 
-                    <div className="mt-3 flex flex-wrap gap-4">
+                    <div className="mt-3 flex flex-wrap gap-3">
                       {Object.entries(car).map(([key, value]) => (
                         <div
                           className="flex justify-between gap-5 w-full text-right"
