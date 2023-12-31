@@ -1,8 +1,8 @@
-import React from "react";
 import { CarsProps } from "../types/index";
 import { calculateCarRent } from "@/utils";
 import Image from "next/image";
 import CustomButton from "@/shared/CustomButton";
+import CarDetailsModal from "./CarDetailsModal";
 
 interface CarCardProps {
   car: CarsProps;
@@ -70,6 +70,7 @@ const CarCard = ({ car }: CarCardProps) => {
             <p className="text-[14px]">{city_mpg} MPG</p>
           </div>
         </div>
+        {/* /Onclick Modal/ */}
         <div className="car-card__btn-container">
           <CustomButton
             title="View More"
@@ -79,6 +80,7 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+      <CarDetailsModal car={car} />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { GetCarsResponse } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const rapidAPI_KEY = "0bfc7d3c57mshb783830598ac7fep1f7ebfjsnb8afed32d414";
@@ -20,5 +19,4 @@ export const carsApi = createApi({
     }),
   }),
 });
-
 export const { useGetCarsQuery } = carsApi;

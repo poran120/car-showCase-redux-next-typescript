@@ -7,6 +7,7 @@ import { carsApi } from "./features/apiFetch/apiFetch";
 export const store = configureStore({
   reducer: {
     query: querySlice,
+
     [carsApi.reducerPath]: carsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -11,7 +11,7 @@ export default function Home() {
     error,
     isLoading,
   } = useGetCarsQuery({ model: "corolla", limit: "30" });
-
+  console.log(process.env.NODE_ENV, "kddf");
   return (
     <main className="overflow-hidden">
       <Hero />
