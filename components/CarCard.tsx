@@ -3,6 +3,13 @@ import { calculateCarRent } from "@/utils";
 import Image from "next/image";
 import CustomButton from "@/shared/CustomButton";
 import CarDetailsModal from "./CarDetailsModal";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+import {
+  openModal,
+  closeModal,
+  selectIsModalOpen,
+} from "@/app/store/features/modalSlice.ts/modalSlice";
 
 interface CarCardProps {
   car: CarsProps;
@@ -21,8 +28,16 @@ const CarCard = ({ car }: CarCardProps) => {
     fuel_type,
     highway_mpg,
   } = car;
-
+  //Calculate for carRent
   const carRent = calculateCarRent(city_mpg, year);
+
+  //Modal
+  const dispatch = useDispatch();
+  const isOpen: boolean = useSelector((state: RootState) => state.modal.isOpen);
+
+  const handleOpenModal = () => {
+    console.log("hello");
+  };
 
   return (
     <div className="car-card group mb-5">
@@ -77,10 +92,11 @@ const CarCard = ({ car }: CarCardProps) => {
             containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
             textStyles="text-white text-[14px] leading-[17px] font-bold"
             rightIcon="/right-arrow.svg"
+            handleClick={handleOpenModal}
           />
         </div>
       </div>
-      <CarDetailsModal car={car} />
+      <CarDetailsModal car={car} isOpen={isOpen} closeModal={() => isOpen} />
     </div>
   );
 };
