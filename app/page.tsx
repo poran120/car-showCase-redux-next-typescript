@@ -10,7 +10,7 @@ export default function Home() {
     data: cars,
     error,
     isLoading,
-  } = useGetCarsQuery({ model: "corolla", limit: "30" });
+  } = useGetCarsQuery({ model: "carrera", limit: "30" });
 
   return (
     <main className="overflow-hidden">

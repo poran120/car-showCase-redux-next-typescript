@@ -30,7 +30,7 @@ const CarCard = ({ car }: CarCardProps) => {
     dispatch(closeModal());
   };
   return (
-    <div className="car-card group mb-5">
+    <section className="car-card group mb-5">
       <div className="car-card__content">
         <h2 className="car-card__content-title">
           {make} {model}
@@ -91,7 +91,7 @@ const CarCard = ({ car }: CarCardProps) => {
         isOpen={isOpen}
         handleCloseModal={handleCloseModal}
       />
-    </div>
+    </section>
   );
 };
 
