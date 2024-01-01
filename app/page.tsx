@@ -22,7 +22,7 @@ export default function Home() {
             Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13
           </p>
         </div>
-        <div className="home__filters">
+        <div className="home__filters mb-4">
           <SearchBar />
           <div className="home__filter-container">
             {/* <CustomFilter title="fuel" />
