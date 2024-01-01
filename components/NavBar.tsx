@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CustomButton from "../shared/CustomButton";
 import Link from "next/link";
-
+import SignInButton from "./SignInButton";
 const Nav = () => {
   return (
     <header className="w-full absolute z-10">
@@ -15,11 +15,12 @@ const Nav = () => {
             className="object-contain"
           />
         </Link>
-        <CustomButton
+        {/* <CustomButton
           title={`Sign In`}
           btnType="button"
           containerStyles="text-primary-blue rounded-full bg-white min-w-[130px]"
-        />
+        /> */}
+        {/* <SignInButton /> */}
       </nav>
     </header>
   );

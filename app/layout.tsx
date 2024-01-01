@@ -3,6 +3,8 @@ import "./globals.css";
 import Nav from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Providers } from "./store/provider";
+import CustomProvider from "@/components/CustomProvider";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Car ShowCase",
@@ -14,7 +16,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body className="relative">
         <Nav />
-        <Providers>{children}</Providers>
+        <Providers>
+          <SessionProvider session={session}>{children}</SessionProvider>
+
+          {children}
+        </Providers>
         <Footer />
       </body>
     </html>
