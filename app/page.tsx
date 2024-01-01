@@ -10,7 +10,7 @@ export default function Home() {
     data: cars,
     error,
     isLoading,
-  } = useGetCarsQuery({ model: "carrera", limit: "30" });
+  } = useGetCarsQuery({ model: "corolla", limit: "30" });
 
   return (
     <main className="overflow-hidden">
@@ -29,7 +29,7 @@ export default function Home() {
             <CustomFilter title="year" /> */}
           </div>
         </div>
-        <section>
+        <section className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
           {cars?.map((car: any) => (
             <CarCard key={car._id} car={car} />
           ))}

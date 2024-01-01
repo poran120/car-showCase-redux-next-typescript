@@ -1,9 +1,7 @@
 "use client";
 
-import { manufacturers } from "@/constants";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-manufacturers;
 
 export interface SetQuery {
   query: string;
