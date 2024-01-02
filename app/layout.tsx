@@ -3,7 +3,7 @@ import "./globals.css";
 import Nav from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Providers } from "./store/provider";
-import CustomProvider from "@/components/CustomProvider";
+import { NextAuthProvider } from "@/components/NextAuthProvider";
 
 export const metadata: Metadata = {
   title: "Car ShowCase",
@@ -14,11 +14,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className="relative">
-        <Nav />
-        <Providers>
-          <CustomProvider>{children}</CustomProvider>
-        </Providers>
-        <Footer />
+        <NextAuthProvider>
+          <Nav />
+          <Providers>{children}</Providers>
+          <Footer />
+        </NextAuthProvider>
       </body>
     </html>
   );

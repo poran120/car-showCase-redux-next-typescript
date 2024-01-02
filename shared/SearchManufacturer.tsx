@@ -31,7 +31,7 @@ const SearchManufacturer = ({
   return (
     <div className="search-manufacturer">
       <Combobox>
-        <div className="relative w-full">
+        <div className="relative w-full flex items-center">
           <Combobox.Button className={`absolute top-[14px]`}>
             <Image
               src="/car-logo.svg"

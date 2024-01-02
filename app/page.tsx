@@ -4,6 +4,7 @@ import SearchBar from "@/shared/SearchBar";
 import { useGetCarsQuery } from "./store/features/apiFetch/apiFetch";
 import { CarCard, CustomButton } from "@/components";
 import Link from "next/link";
+import Loading from "@/shared/Loading";
 
 export default function Home() {
   const {
@@ -24,16 +25,16 @@ export default function Home() {
         </div>
         <div className="home__filters mb-4">
           <SearchBar />
-          <div className="home__filter-container">
-            {/* <CustomFilter title="fuel" />
-            <CustomFilter title="year" /> */}
-          </div>
         </div>
-        <section className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
-          {cars?.map((car: any) => (
-            <CarCard key={car._id} car={car} />
-          ))}
-        </section>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+            {cars?.map((car: any) => (
+              <CarCard key={car._id} car={car} />
+            ))}
+          </div>
+        )}
 
         <div className="w-full justify-center flex items-center">
           <button className="flex items-center justify-center text-center bg-primary-blue text-white rounded-full px-5 py-3">

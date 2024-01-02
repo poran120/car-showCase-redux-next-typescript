@@ -30,6 +30,7 @@ export interface CarsProps {
   model: string;
   transmission: string;
   year: number;
+  _id?: number | string;
 }
 //
 export interface GetCarsResponse {

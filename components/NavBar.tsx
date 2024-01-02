@@ -1,8 +1,11 @@
+"use client";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import CustomButton from "../shared/CustomButton";
 import Link from "next/link";
-import SignInButton from "./SignInButton";
+
 const Nav = () => {
+  const { data: session, status } = useSession();
+  console.log(status);
   return (
     <header className="w-full sticky z-10 drop-shadow-lg top-0 bg-slate-100">
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4 bg-transparent top-0">
@@ -34,8 +37,22 @@ const Nav = () => {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
+            {/* <li>
+              <button onClick={() => signIn("github")}>Sign In</button>
+            </li> */}
+            {status === "authenticated" && (
+              <div>
+                <Image
+                  src={session.user?.image || "/default-user-image.jpg"}
+                  alt="User Photo"
+                  width={35}
+                  height={35}
+                />
+                <button onClick={() => signOut()}>Sign Out</button>
+              </div>
+            )}
             <li>
-              <Link href="/signIn">Sign In</Link>
+              <button onClick={() => signIn("google")}>Login</button>
             </li>
           </ul>
         </div>
