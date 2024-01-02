@@ -1,16 +1,16 @@
 "use client";
 import Hero from "@/components/Hero";
-import CustomFilter from "@/shared/CustomFilter";
 import SearchBar from "@/shared/SearchBar";
 import { useGetCarsQuery } from "./store/features/apiFetch/apiFetch";
-import { CarCard } from "@/components";
+import { CarCard, CustomButton } from "@/components";
+import Link from "next/link";
 
 export default function Home() {
   const {
     data: cars,
     error,
     isLoading,
-  } = useGetCarsQuery({ model: "corolla", limit: "30" });
+  } = useGetCarsQuery({ model: "corolla", limit: "4" });
 
   return (
     <main className="overflow-hidden">
@@ -34,6 +34,12 @@ export default function Home() {
             <CarCard key={car._id} car={car} />
           ))}
         </section>
+
+        <div className="w-full justify-center flex items-center">
+          <button className="flex items-center justify-center text-center bg-primary-blue text-white rounded-full px-5 py-3">
+            <Link href="/products">Explore Cars</Link>
+          </button>
+        </div>
       </div>
     </main>
   );

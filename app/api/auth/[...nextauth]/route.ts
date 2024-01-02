@@ -10,6 +10,7 @@ const handler = NextAuth({
       clientId: string;
       clientSecret: string;
     }),
+    // GithubProvider
   ],
 });
 
