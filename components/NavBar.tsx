@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const Nav = () => {
   const { data: session, status } = useSession();
-  console.log(status);
   return (
     <header className="w-full sticky z-10 drop-shadow-lg top-0 bg-slate-100">
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4 bg-transparent top-0">
@@ -21,7 +20,7 @@ const Nav = () => {
           </Link>
         </div>
         <div>
-          <ul className="flex lg:gap-[40px] md:gap-[30px] gap-[20px] font-bold">
+          <ul className="flex items-center lg:gap-[40px] md:gap-[30px] gap-[20px] font-bold">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -37,23 +36,23 @@ const Nav = () => {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
-            {/* <li>
-              <button onClick={() => signIn("github")}>Sign In</button>
-            </li> */}
-            {status === "authenticated" && (
-              <div>
-                <Image
-                  src={session.user?.image || "/default-user-image.jpg"}
-                  alt="User Photo"
-                  width={35}
-                  height={35}
-                />
-                <button onClick={() => signOut()}>Sign Out</button>
+            {status === "authenticated" ? (
+              <div className="flex gap-2 items-center">
+                <Link href="/profile">
+                  <Image
+                    className="rounded-full"
+                    src={session.user?.image || "/default-user-image.jpg"}
+                    alt="User Photo"
+                    width={35}
+                    height={35}
+                  />
+                </Link>
               </div>
+            ) : (
+              <li>
+                <button onClick={() => signIn("google")}>Login</button>
+              </li>
             )}
-            <li>
-              <button onClick={() => signIn("google")}>Login</button>
-            </li>
           </ul>
         </div>
       </nav>
