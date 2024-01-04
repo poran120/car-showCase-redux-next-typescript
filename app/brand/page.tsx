@@ -1,7 +1,5 @@
-import React from "react";
-
 const Brand = () => {
-  return <div>dsfdfdsffds</div>;
+  return <div>Hello brand</div>;
 };
 
 export default Brand;
