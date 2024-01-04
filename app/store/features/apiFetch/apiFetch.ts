@@ -7,6 +7,9 @@ export const carsApi = createApi({
   reducerPath: "cars",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://cars-by-api-ninjas.p.rapidapi.com/v1/",
+    next: {
+      revalidate: 10,
+    },
     prepareHeaders: (headers) => {
       headers.set("X-RapidAPI-Key", rapidAPI_KEY);
       headers.set("X-RapidAPI-Host", rapidAPI_HOST);
